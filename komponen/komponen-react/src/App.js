@@ -1,9 +1,9 @@
-import Komponen from "./Komponen";
+import Styling from "./Styling";
 
 function App() {
   return (
     <div className="App">
-      <Komponen />
+      <Styling />
     </div>
   );
 }

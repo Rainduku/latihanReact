@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "react-bootstrap": "^2.10.7",
+    "sass": "^1.83.0",
+    "styled-components": "^6.1.13",
+    "web-vitals": "^4.2.4"
+  }
+}
