@@ -8,14 +8,22 @@ export default class FormElement extends React.Component {
         alamat: '',
         member: false
     }
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         alert(`
             nama: ${this.state.nama}
             jurusan: ${this.state.jurusan}
             gender: ${this.state.gender}
             alamat: ${this.state.alamat}
             member: ${this.state.member ? 'YES' : 'NO'}
-            `)
+            `);
+            this.setState({
+                nama: '',
+                jurusan: '',
+                gender: '',
+                alamat: '',
+                member: false
+            })
     }
     render() {
         return (
@@ -24,6 +32,7 @@ export default class FormElement extends React.Component {
                     <label>
                         Nama: <input type="text" name="nama" 
                         onChange={ e => this.setState({nama: e.target.value})}
+                        value={this.state.nama}
                         /> 
                     </label>
                     <br />
@@ -52,6 +61,7 @@ export default class FormElement extends React.Component {
                     <label>
                         Alamat: <textarea name="alamat" cols="30" rows="10" 
                         onChange={ e => this.setState({alamat: e.target.value})}
+                        value={this.state.alamat}
                         />
                     </label>
                     <br />
