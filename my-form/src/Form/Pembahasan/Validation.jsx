@@ -10,7 +10,7 @@ const Input = ({label, type, name, onChange}) => {
     )
 }
 
-const ShowErrors = ({errors}) => {
+const ShowErrors = ({errors}) => { //untuk menampilkan hasil errprs
     return (
         <ul style={{color: 'red', marginLeft: '-20px'}}>
             {
@@ -27,7 +27,7 @@ class Validation extends React.Component {
     }
     handleSubmit = event => {
         event.preventDefault();
-        const {email, password} = this.state;
+        const {email, password} = this.state; //kondisional error
 
         let message = [];
 
@@ -37,6 +37,24 @@ class Validation extends React.Component {
         if(password.length === 0) {
             message = [...message, 'password tidak boleh kosong'];
         }
+
+        const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if (!re.test(String(email).toLocaleLowerCase())) {
+            message = [...message, 'email not valid'];//validasi menggunakan regex
+        }
+
+        if (password.length < 9) {
+            message = [...message, 'password is too short'];
+        }else {
+            alert(`
+                email: ${this.state.email}
+                password: ${this.state.password}
+                `);
+                this.setState({//ini belum berfungsi
+                    errors: []
+                });
+        }
+
         if (message.length > 0) {
             this.setState({
                 errors: message
@@ -44,7 +62,7 @@ class Validation extends React.Component {
         }
     }
     render() {
-        const style = {
+        const style = { //style untuk element
             width: '400px',
             margin: '100px auto 0',
             border: '1px solid black',
@@ -53,7 +71,7 @@ class Validation extends React.Component {
         return (
             <div style={style}>
                 {
-                    this.state.errors && <ShowErrors errors={this.state.errors} />
+                    this.state.errors && <ShowErrors errors={this.state.errors} /> //untuk menangkap error
                 }
                 <h4>Selamat Datang</h4>
                 <form onSubmit={this.handleSubmit}>
