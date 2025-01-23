@@ -1,5 +1,7 @@
 const Home = () => {
-    return <h1>ini halaman home</h1>
+    return (<h1>Halaman Home latihan React</h1>
+        
+    )
 };
 
 export default Home;
